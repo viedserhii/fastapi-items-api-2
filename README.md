@@ -25,7 +25,7 @@ python -m venv .venv
 .venv\Scripts\activate
 # Linux/macOS:
 source .venv/bin/activate
-pip install -r requirements.txt
+pip install -r prereqs.txt
 uvicorn app.main:app --reload
 ```
 Перевірка: `http://127.0.0.1:8000/docs`.
