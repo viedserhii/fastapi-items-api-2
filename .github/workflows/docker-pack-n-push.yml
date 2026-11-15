@@ -58,10 +58,18 @@ jobs:
         if: ${{ !inputs.push_to_registry }}
         run: docker save "${{ secrets.DOCKERHUB_USERNAME }}/${{ inputs.repository }}:${{ inputs.tag }}" -o /tmp/fastapi-items-api.tar
 
+      - name: Prepare artifact name
+        if: ${{ !inputs.push_to_registry }}
+        id: artifact-name
+        shell: bash
+        run: |
+          SAFE_BRANCH_NAME="${GITHUB_REF_NAME//\//-}"
+          echo "name=docker-image-${SAFE_BRANCH_NAME}-${{ inputs.tag }}" >> "$GITHUB_OUTPUT"
+
       - name: Upload Docker image artifact
         if: ${{ !inputs.push_to_registry }}
         uses: actions/upload-artifact@v4
         with:
-          name: docker-image-${{ github.ref_name }}-${{ inputs.tag }}
+          name: ${{ steps.artifact-name.outputs.name }}
           path: /tmp/fastapi-items-api.tar
           if-no-files-found: error
