@@ -17,6 +17,8 @@ jobs:
   build-n-test:
     name: Build and Test
     runs-on: ubuntu-latest
+    env:
+      PYTHONPATH: ${{ github.workspace }}
     steps:
       - name: Checkout
         uses: actions/checkout@v4
@@ -32,7 +34,7 @@ jobs:
       - name: Build application
         run: python -m compileall app
       - name: Run unit tests
-        run: pytest -q
+        run: python -m pytest -q
 
   docker-pack-n-push:
     name: Docker Pack and Push
