@@ -29,7 +29,7 @@ def create_item(payload: ItemCreate):
     global next_id
     item = Item(id=next_id, **payload.model_dump())
     items[next_id] = item
-    next_id += 1
+    next_id +=1
     return item
 
 @app.put("/api/items/{item_id}", response_model=Item, tags=["items"])
