@@ -41,7 +41,7 @@ jobs:
     needs: build-n-test
     uses: ./.github/workflows/docker-pack-n-push.yml
     with:
-      repository: ${{ vars.DOCKERHUB_USERNAME }}/${{ vars.DOCKERHUB_REPOSITORY }}
+      repository: ${{ vars.DOCKERHUB_REPOSITORY }}
       tag: latest
       push_to_registry: ${{ github.ref == 'refs/heads/main' }}
     secrets:
