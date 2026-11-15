@@ -13,6 +13,7 @@ class Item(ItemCreate):
 items: dict[int, Item] = {}
 next_id = 1
 
+
 @app.get("/api/items", response_model=list[Item], tags=["items"])
 def list_items():
     return list(items.values())
