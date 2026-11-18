@@ -13,8 +13,8 @@
 
 ### Docker image
 ```bash
-docker build -t fastapi-items-api:latest .
-docker run --rm -p 8000:8000 fastapi-items-api:latest
+docker build -t fastapi-items-api-2:latest .
+docker run --rm -p 8000:8000 fastapi-items-api-2:latest
 ```
 Перевірка: `http://localhost:8000/docs`.
 

@@ -16,7 +16,7 @@ pool:
   vmImage: ubuntu-latest
 
 variables:
-  imageRepository: 'viedsa/fastapi-items-api'
+  imageRepository: 'viedsa/fastapi-items-api-2'
   dockerRegistryServiceConnection: 'dockerhub-service-connection'
   dockerfilePath: '$(Build.SourcesDirectory)/Dockerfile'
 

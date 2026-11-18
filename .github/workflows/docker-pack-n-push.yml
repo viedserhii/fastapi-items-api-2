@@ -56,7 +56,7 @@ jobs:
 
       - name: Save Docker image
         if: ${{ !inputs.push_to_registry }}
-        run: docker save "${{ secrets.DOCKERHUB_USERNAME }}/${{ inputs.repository }}:${{ inputs.tag }}" -o /tmp/fastapi-items-api.tar
+        run: docker save "${{ secrets.DOCKERHUB_USERNAME }}/${{ inputs.repository }}:${{ inputs.tag }}" -o /tmp/fastapi-items-api-2.tar
 
       - name: Prepare artifact name
         if: ${{ !inputs.push_to_registry }}
@@ -71,5 +71,5 @@ jobs:
         uses: actions/upload-artifact@v4
         with:
           name: ${{ steps.artifact-name.outputs.name }}
-          path: /tmp/fastapi-items-api.tar
+          path: /tmp/fastapi-items-api-2.tar
           if-no-files-found: error
